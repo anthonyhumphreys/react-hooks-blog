@@ -1,0 +1,24 @@
+stages:
+- name: Build and Publish
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: eu.gcr.io/lexio-dev-235321/reacthooks:latest
+      pushRemote: true
+      registry: eu.gcr.io
+  when:
+    branch:
+      include:
+      - master
+    event:
+      include:
+      - pull_request
+timeout: 60
+notification:
+  recipients:
+  - recipient: '#monitoring'
+    notifier: c-jkwtn:n-r445p
+  condition:
+  - Success
+  - Failed
