@@ -8,9 +8,7 @@ stages:
       pushRemote: true
       registry: eu.gcr.io
   when:
-    branch:
-      include:
-      - master
+    branch: {}
     event:
       include:
       - pull_request
