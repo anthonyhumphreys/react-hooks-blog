@@ -1,7 +1,6 @@
 ---
-title: reacthooks.dev
+title: useDocumentation
 category: "oops"
-cover: hellohooks.jpeg
 author: Anthony Humphreys
 ---
 
