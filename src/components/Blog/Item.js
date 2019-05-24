@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 const Item = props => {
+  console.log(props);
   const {
     theme,
     post: {

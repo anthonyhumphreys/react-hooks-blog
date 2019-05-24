@@ -1,15 +1,16 @@
 ---
 title: useDocumentation
 category: "oops"
+cover: facepalm.jpg
 author: Anthony Humphreys
 ---
 
-# You're probably not going mad, just check your use of that pesky second parameter
+# useDocumentation
 
 ## Setting the scene
 Currently at React Europe and between scenes I was working on a chat interface in React Native that connects to AWS Lex. I encountered a fun bug, where the message typed by the user was rendering very briefly, only to be mysteriously whisked away again when the response came back from Lex and the message was supposedly appended to the array of sent and received messages.
 
-<img height="500" alt="GIF Showing a message typed by the user disappearing when the response is rendered" src="./fail.gif">
+<!-- <img height="500" alt="GIF Showing a message typed by the user disappearing when the response is rendered" src="./fail.gif"> -->
 
 ## The broken code
 
@@ -43,7 +44,7 @@ setMessages(oldMessages => [...oldMessages, { message, from }]);
 
 This now works, producing the following behaviour
 
-<img height="500" alt="GIF Showing a message typed by the user persisting when the response is rendered" src="./success.gif">
+<!-- <img height="500" alt="GIF Showing a message typed by the user persisting when the response is rendered" src="./success.gif"> -->
 
 That's all there is to it. This is analagous to the 'old' way of setting state using:
 
