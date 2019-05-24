@@ -1,7 +1,7 @@
 ---
 title: useDocumentation
 category: "oops"
-cover: facepalm.jpeg
+cover: facepalm.jpg
 author: Anthony Humphreys
 ---
 
