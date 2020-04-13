@@ -11,7 +11,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
-  RUN_REGION: ${{ RUN_REGION }}
+  RUN_REGION: ${{ secrets.RUN_REGION }}
   SERVICE_NAME: reacthooks
 
 jobs:
