@@ -13,6 +13,12 @@ env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: ${{ secrets.RUN_REGION }}
   SERVICE_NAME: reacthooks
+  GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_ONLY_API_KEY: ${{ secrets.ALGOLIA_SEARCH_ONLY_API_KEY }}
+  ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
+  ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+  FB_APP_ID: ${{ secrets.FB_APP_ID }}
 
 jobs:
   setup-build-deploy:
@@ -44,14 +50,6 @@ jobs:
           gcloud builds submit \
             --quiet \
             --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
-            --args [
-              GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }},
-              ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }},
-              ALGOLIA_SEARCH_ONLY_API_KEY: ${{ secrets.ALGOLIA_SEARCH_ONLY_API_KEY }},
-              ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_ADMIN_API_KEY }},
-              ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }},
-              FB_APP_ID: ${{ secrets.FB_APP_ID }}
-            ]
       # Deploy image to Cloud Run
       - name: Deploy
         run: |-
