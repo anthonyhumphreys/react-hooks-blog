@@ -11,16 +11,17 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
-  RUN_REGION: us-central1
-  SERVICE_NAME: helloworld-nodejs
+  RUN_REGION: ${{ RUN_REGION }}
+  SERVICE_NAME: reacthooks
+
 jobs:
   setup-build-deploy:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
     steps:
+      # Checkout code
       - name: Checkout
         uses: actions/checkout@v2
-
       # Setup gcloud CLI
       - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
@@ -28,13 +29,20 @@ jobs:
           service_account_email: ${{ secrets.RUN_SA_EMAIL }}
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
           project_id: ${{ secrets.RUN_PROJECT }}
-
       # Build and push image to Google Container Registry
       - name: Build
         run: |-
           gcloud builds submit \
             --quiet \
             --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
+            --env (
+              GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+              ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+              ALGOLIA_SEARCH_ONLY_API_KEY: ${{ secrets.ALGOLIA_SEARCH_ONLY_API_KEY }}
+              ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
+              ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+              FB_APP_ID: ${{ secrets.FB_APP_ID }}
+            )
       # Deploy image to Cloud Run
       - name: Deploy
         run: |-
