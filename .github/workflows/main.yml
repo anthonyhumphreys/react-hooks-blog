@@ -8,24 +8,39 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
+    env:
+      PROJECT_ID: ${{ secrets.RUN_PROJECT }}
+      RUN_REGION: us-central1
+      SERVICE_NAME: helloworld-nodejs
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    jobs:
+      setup-build-deploy:
+        - name: Setup, Build, and Deploy
+          runs-on: ubuntu-latest
+          steps:
+            - name: Checkout
+              uses: actions/checkout@v2
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Build the Docker image
-        run: docker build . -t eu.gcr.io/lexio-dev-235321/reacthooks:latest
-      - name: Deploy service to Cloud Run
-        uses: stefda/action-cloud-run@1.0.0
-        with:
-          image: gcr.io/eu.gcr.io/lexio-dev-235321/reacthooks:latest
-          service: reacthooks
-          project: lexio-dev-235321
-          region: europe-west1
-          service key: ${{ secrets.GCLOUD_AUTH }}
+            # Setup gcloud CLI
+            - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+              with:
+                version: "286.0.0"
+                service_account_email: ${{ secrets.RUN_SA_EMAIL }}
+                service_account_key: ${{ secrets.GCLOUD_AUTH }}
+                project_id: ${{ secrets.RUN_PROJECT }}
+
+            # Build and push image to Google Container Registry
+            - name: Build
+              run: |-
+                gcloud builds submit \
+                  --quiet \
+                  --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
+            # Deploy image to Cloud Run
+            - name: Deploy
+              run: |-
+                gcloud run deploy "$SERVICE_NAME" \
+                  --quiet \
+                  --region "$RUN_REGION" \
+                  --image "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA" \
+                  --platform "managed" \
+                  --allow-unauthenticated
