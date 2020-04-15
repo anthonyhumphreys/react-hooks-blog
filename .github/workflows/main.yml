@@ -35,15 +35,6 @@ jobs:
           service_account_email: ${{ secrets.RUN_SA_EMAIL }}
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
           project_id: ${{ secrets.RUN_PROJECT }}
-      - name: Set up NodeJS and build Gatsby Site
-        uses: actions/setup-node@v1
-        with:
-          node-version: 10
-      - run: yarn
-      - run: yarn global add gatsby-cli
-      - run: yarn build
-        env:
-          CI: true
       # Build and push image to Google Container Registry
       - name: Build
         run: |-
