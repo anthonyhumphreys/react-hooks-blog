@@ -52,9 +52,9 @@ jobs:
         run: docker push eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
       - name: Deploy
         run: |-
-          gcloud run deploy "$SERVICE_NAME" \
+          gcloud run deploy $SERVICE_NAME \
             --quiet \
-            --region "$RUN_REGION" \
-            --image "eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA" \
-            --platform "managed" \
+            --region $RUN_REGION \
+            --image eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA \
+            --platform managed \
             --allow-unauthenticated
