@@ -25,23 +25,19 @@ jobs:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
     steps:
-      # Checkout code
       - name: Checkout
         uses: actions/checkout@v2
-      # Setup gcloud CLI
-      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      - name: Setup GCloud
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
           version: "286.0.0"
           service_account_email: ${{ secrets.RUN_SA_EMAIL }}
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
           project_id: ${{ secrets.RUN_PROJECT }}
-      # Build and push image to Google Container Registry
-      - name: Build
-        run: |-
-          gcloud builds submit \
-            --quiet \
-            --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
-      # Deploy image to Cloud Run
+      - name: Build Docker Image
+        run: docker build . -t "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
+      - name: Push Docker Image to gcr
+        run: docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
       - name: Deploy
         run: |-
           gcloud run deploy "$SERVICE_NAME" \
