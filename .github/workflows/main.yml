@@ -45,14 +45,16 @@ jobs:
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
           project_id: ${{ secrets.RUN_PROJECT }}
       - name: Build Docker Image
-        run: docker build . -t "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
+        run: docker build . -t "eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
+      - name: Authenticate for gcr
+        run: gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://eu.gcr.io/$PROJECT_ID
       - name: Push Docker Image to gcr
-        run: docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
+        run: docker push eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
       - name: Deploy
         run: |-
           gcloud run deploy "$SERVICE_NAME" \
             --quiet \
             --region "$RUN_REGION" \
-            --image "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA" \
+            --image "eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA" \
             --platform "managed" \
             --allow-unauthenticated
