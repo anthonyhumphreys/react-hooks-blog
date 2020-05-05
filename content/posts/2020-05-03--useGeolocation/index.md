@@ -25,7 +25,7 @@ Let's cut straight to the code:
 
 The hook is super simple to use. The first call returns a [position object](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPosition) or an [error](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError), the second call will update 'position' every time the underlying hook receives an updated position from the Geolocation API, and will maintain an array of all positions observed in 'locationHistory'.
 
-You can check out the full code in this blog's repo over at [GitHub](https://github.com/anthonyhumphreys/hooks) or install it from [npm](https://www.npmjs.com/package/@anthonyhumphreys/hooks)
+You can check out the code over at [GitHub](https://github.com/anthonyhumphreys/hooks) or install it from [npm](https://www.npmjs.com/package/@anthonyhumphreys/hooks)
 
 The design of the underlying hook allows you to seamlessly switch between 'modes' too - so you could seamlessly transition between displaying a user's initial location and showing a user's journey as the follow directions, for example.
 
