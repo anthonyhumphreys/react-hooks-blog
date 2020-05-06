@@ -30,3 +30,12 @@ export default createContext<IThemeContext>({
 `activeTheme` is an enum, `Mode` which is either `DARK` or `LIGHT`.
 
 `setTheme` calls a setter for a useState hook which drives the value of `theme` based on the current `Mode`.
+
+The code for the actual hook is actually quite simple, and arguably unnecessary, though it avoids me having to repeatedly import and use a context provider, and allows for some future functionality.
+
+```typescript
+export default function useTheme() {
+  const { theme } = useContext(themeContext);
+  return theme;
+}
+```
