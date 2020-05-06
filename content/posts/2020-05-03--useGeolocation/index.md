@@ -27,6 +27,6 @@ The hook is super simple to use. The first call returns a [position object](http
 
 You can check out the code over at [GitHub](https://github.com/anthonyhumphreys/hooks) or install it from [npm](https://www.npmjs.com/package/@anthonyhumphreys/hooks)
 
-The design of the underlying hook allows you to seamlessly switch between 'modes' too - so you could seamlessly transition between displaying a user's initial location and showing a user's journey as the follow directions, for example.
+The design of the underlying hook allows you to seamlessly switch between 'modes' too - so you could seamlessly transition between displaying a user's initial location and showing a user's journey as they follow directions, for example.
 
 Its that simple. This is one of the most attractive value propositions offered by hooks - abstracting away logic in an easily reusable and easy to consume manner.
