@@ -5,7 +5,7 @@ cover: storage.jpg
 author: Anthony Humphreys
 ---
 
-For day 3 of my #100DaysOfCode challenge I thought I would expand and polish a hook I previously wrote (adapted from several examples on line) which wraps the useState hook and persists state in localStorage or sessionStorage depending on use case.
+For day 3 of my #100DaysOfCode challenge I thought I would expand and polish a hook I previously wrote (adapted from several examples online such as [this one](https://medium.com/@andrewgbliss/react-custom-hook-uselocalstorage-afbde976c72b)) which wraps the useState hook and persists state in localStorage or sessionStorage depending on use case.
 
 The hook conforms to a mix of the localStorage and useState API.
 
