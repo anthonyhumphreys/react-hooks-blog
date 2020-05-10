@@ -57,3 +57,7 @@ export const useBrowserStorage = (
   return [storedValue, setValue];
 };
 ```
+
+### UPDATE
+
+This was originally published as 'useLocalStorage' - but then I realised using session storage in a hook called that wouldn't make much sense. Naming things is hard!
