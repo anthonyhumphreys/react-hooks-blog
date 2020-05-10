@@ -51,3 +51,5 @@ The state returned by the hook mimics a promise, it can either be pending, compl
 Hopefully this will help testing behaviour across components, and avoiding those inevitable bugs that creep in when integrating a UI with an API, like stutters between loading and success states, for example.
 
 That's all! Go checkout the code on [GitHub](https://github.com/anthonyhumphreys/hooks/) or install my handy hooks library from [npm](https://www.npmjs.com/package/@anthonyhumphreys/hooks)
+
+This post was for day 1 of my [#100DaysOfCode](https://twitter.com/hashtag/100DaysOfCode) challenge. [Follow me on Twitter](https://twitter.com/aphumphreys) for more.
