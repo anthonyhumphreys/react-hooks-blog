@@ -8,15 +8,15 @@ author: Anthony Humphreys
 You can see the hook takes a few simple parameters, including the familiar pairing of a callback function and a delay in milliseconds. This follows the shape of JavaScript's setTimeout and setInterval methods.
 
 ```TypeScript
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 enum FakeAsyncState {
-  PENDING = "PENDING",
-  COMPLETE = "COMPLETE",
-  ERROR = "ERROR",
+  PENDING = 'PENDING',
+  COMPLETE = 'COMPLETE',
+  ERROR = 'ERROR',
 }
 
-const useFakeAsync: Function = (
+export const useFakeAsync: Function = (
   callback: Function,
   delay: number = 3000,
   shouldError: boolean = false,
@@ -40,9 +40,6 @@ const useFakeAsync: Function = (
 
   return [state];
 };
-
-export default useFakeAsync;
-
 ```
 
 The hook also takes a 'shouldError' parameter so that an error condition can be forced.

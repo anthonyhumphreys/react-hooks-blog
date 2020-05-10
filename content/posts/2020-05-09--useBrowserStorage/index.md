@@ -16,27 +16,26 @@ This is so simple to use, virtually a drop in replacement for useState and gives
 That's it! Full hook code below, and published over at [npm](https://www.npmjs.com/package/@anthonyhumphreys/hooks) with the code available on [GitHub](https://github.com/anthonyhumphreys/hooks)
 
 ```TypeScript
-import { useState } from "react";
-import { name as packageName } from "../../package.json";
+import { useState } from 'react';
 
 enum StorageType {
-  LOCAL_STORAGE = "LOCAL_STORAGE",
-  SESSION_STORAGE = "SESSION_STORAGE",
+  LOCAL_STORAGE = 'LOCAL_STORAGE',
+  SESSION_STORAGE = 'SESSION_STORAGE',
 }
 
-const useBrowserStorage = (
+export const useBrowserStorage = (
   key: string,
   initialValue: string,
   type: StorageType
 ) => {
   const storageProvider =
-    type === Type.LOCAL_STORAGE ? window.localStorage : window.sessionStorage;
-
-  const fullKey = `${packageName}:${key}`;
+    type === StorageType.LOCAL_STORAGE
+      ? window.localStorage
+      : window.sessionStorage;
 
   const [storedValue, setStoredValue] = useState<string>(() => {
     try {
-      const storedItem = storageProvider.getItem(fullKey);
+      const storedItem = storageProvider.getItem(key);
       return storedItem ? JSON.parse(storedItem) : initialValue;
     } catch (error) {
       console.error(error);
@@ -49,7 +48,7 @@ const useBrowserStorage = (
       const valueToStore =
         value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
-      storageProvider.setItem(fullKey, JSON.stringify(valueToStore));
+      storageProvider.setItem(key, JSON.stringify(valueToStore));
     } catch (error) {
       console.error(error);
     }
@@ -57,6 +56,4 @@ const useBrowserStorage = (
 
   return [storedValue, setValue];
 };
-
-export default useBrowserStorage;
 ```
