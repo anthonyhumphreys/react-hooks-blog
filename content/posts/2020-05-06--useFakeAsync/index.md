@@ -1,6 +1,6 @@
 ---
 title: useFakeAsync
-category: "Utility"
+category: "100 Days of Code"
 cover: time.jpg
 author: Anthony Humphreys
 ---

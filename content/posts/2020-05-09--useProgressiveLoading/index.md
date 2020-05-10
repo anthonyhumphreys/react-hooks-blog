@@ -1,6 +1,6 @@
 ---
 title: useProgressiveLoading
-category: "Utility"
+category: "100 Days of Code"
 cover: spinner.jpg
 author: Anthony Humphreys
 ---
@@ -65,3 +65,5 @@ That's all there is to this one, its pretty simple!
 You can install this from [npm](https://www.npmjs.com/package/@anthonyhumphreys/hooks) or check out the repo on [GitHub](https://github.com/anthonyhumphreys/hooks)
 
 As always, suggestions, improvements etc all welcome!
+
+This post was for day 4 of my [#100DaysOfCode](https://twitter.com/hashtag/100DaysOfCode) challenge. [Follow me on Twitter](https://twitter.com/aphumphreys) for more.

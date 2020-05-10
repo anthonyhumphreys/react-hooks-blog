@@ -1,6 +1,6 @@
 ---
 title: useBrowserStorage
-category: "Utility"
+category: "100 Days of Code"
 cover: storage.jpg
 author: Anthony Humphreys
 ---
