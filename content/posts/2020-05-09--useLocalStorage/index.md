@@ -9,7 +9,9 @@ For day 3 of my #100DaysOfCode challenge I thought I would expand and polish a h
 
 The hook conforms to a mix of the localStorage and useState API.
 
-`const [state, setState] = useBrowserStorage("key", "value", StorageType.LOCAL_STORAGE)`
+```TypeScript
+const [state, setState] = useBrowserStorage("key", "value", StorageType.LOCAL_STORAGE)
+```
 
 This is so simple to use, virtually a drop in replacement for useState and gives you state persistance and restoration. You can use `state` as an ordinary state variable, and call `setState` with either a string or a function, just like the setter for `useState`.
 
