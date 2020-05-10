@@ -9,6 +9,18 @@ If you've ever worked with a slow moving API that you just can't work around, yo
 
 There are definitely better UX patterns than this, and I am in no way advocating this as a good practice for loading behaviour, but sometimes you can't avoid unsavoury bits of UI like this.
 
+```TSX
+const text = useProgressiveLoading([3, 10, 15], ['Loading your profile is taking a litle longer than normal, please wait',
+    'Still loading, please wait a while longer...',
+    'Still loading your profile, thank you for your patience...']);
+
+return (
+  ...
+  <LoadingText>{text}</LoadingText>
+  ...
+)
+```
+
 The hook takes two parameters, the first is an array of times in seconds, the second is an array of strings. The principle is really simple, the hook creates a timeout for each timing passed, and will update the `text` value each time the timeout fires. The two arrays must be 'balanced' in terms of length, or the hook will throw an error.
 
 ```TypeScript
