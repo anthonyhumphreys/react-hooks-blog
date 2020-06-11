@@ -918,6 +918,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.6.3":
+  version "7.10.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.2.tgz#d103f21f2602497d38348a32e008637d506db839"
+  integrity sha512-6sF3uQw2ivImfVIl62RZ7MXhO2tap69WeWK57vAaimT6AZbE4FbqjdEJIN1UqoD6wI6B+1n9UiagafH1sxjOtg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.0.0-beta.44.tgz#f8832f4fdcee5d59bf515e595fc5106c529b394f"
@@ -7056,6 +7063,14 @@ gatsby-plugin-styled-jsx@^3.0.1:
   integrity sha512-6lB1xnl/WOhb9Fr8MlWOOZZQvY9qrk5ijNmGY3+/bdjfdB7fvCWxtFnrSroJ4fLf3HGNuijeRX/35kcZrExe3g==
   dependencies:
     "@babel/runtime" "^7.8.7"
+
+gatsby-plugin-web-monetization@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-web-monetization/-/gatsby-plugin-web-monetization-1.0.1.tgz#7a3ecddd044e76d7920520298871ba7ae4ddf532"
+  integrity sha512-BQNLpF1zOs5HaWnNnHDXZren7OKBOpTkSXtjIxIo+h9YTOl+7hvE0i77Zrx89C8rabMnlkZwxCqLqDjdxU/BOw==
+  dependencies:
+    "@babel/runtime" "^7.6.3"
+    react "^16.10.2"
 
 gatsby-react-router-scroll@^2.2.1:
   version "2.2.1"
@@ -13991,7 +14006,7 @@ react-visibility-sensor@^4.1.0:
     create-react-class "^15.6.3"
     prop-types "^15.6.2"
 
-react@^16.5.2, react@^16.8.0:
+react@^16.10.2, react@^16.5.2, react@^16.8.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
   integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==

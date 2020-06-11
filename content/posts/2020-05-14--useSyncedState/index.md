@@ -9,7 +9,7 @@ author: Anthony Humphreys
 
 After working on useLocalStorage, I wondered how hard it would be to sync state to persistent, distributed storage. For my 5th Day of 100 Days of code I decided to make a first attempt at this idea.
 
-I followed the same pattern as for building the useLocalStorage hook, extending the useState API, and triggering a useEffect on the state update to handle the state synchronization...asynchronously.
+I followed the same pattern as for building the useLocalStorage hook, extending the useState API, and triggering a useEffect on the state update to handle the state synchronization...asynchronously8.
 
 Without further ado, here's the code...I'll be working more on this. At the moment, this might be useful for a use case such as building a user profile. A common poor experience is filling out some information and _boom_ you've hit refresh, or swiped back on the trackpad...this scenario is already resolved by the localStorage hook, but I thought it would be cool to explore binding state to an API. The current implementation is geared around a REST API, so next steps will be to look at passing a query/mutation to the hook.
 

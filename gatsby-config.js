@@ -271,6 +271,12 @@ module.exports = {
       options: {
         include: /svg-icons/
       }
+    },
+    {
+      resolve: `gatsby-plugin-web-monetization`,
+      options: {
+        paymentPointer: `$ilp.uphold.com/Kh6MRD9JDEr3`
+      }
     }
   ]
 };

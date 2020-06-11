@@ -13,7 +13,7 @@ The hook conforms to a mix of the localStorage and useState API.
 const [state, setState] = useBrowserStorage("key", "value", StorageType.LOCAL_STORAGE)
 ```
 
-This is so simple to use, virtually a drop in replacement for useState and gives you state persistance and restoration. You can use `state` as an ordinary state variable, and call `setState` with either a string or a function, just like the setter for `useState`.
+This is so simple to use, virtually a drop in replacement for useState and gives you state persistence and restoration. You can use `state` as an ordinary state variable, and call `setState` with either a string or a function, just like the setter for `useState`.
 
 That's it! Full hook code below, and published over at [npm](https://www.npmjs.com/package/@anthonyhumphreys/hooks) with the code available on [GitHub](https://github.com/anthonyhumphreys/hooks)
 
